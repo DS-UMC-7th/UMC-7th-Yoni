@@ -9,17 +9,21 @@
 /* Begin PBXBuildFile section */
 		2C8A1D9B2CB26FBD003038F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1D9A2CB26FBD003038F5 /* AppDelegate.swift */; };
 		2C8A1D9D2CB26FBD003038F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1D9C2CB26FBD003038F5 /* SceneDelegate.swift */; };
-		2C8A1D9F2CB26FBD003038F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1D9E2CB26FBD003038F5 /* ViewController.swift */; };
+		2C8A1D9F2CB26FBD003038F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1D9E2CB26FBD003038F5 /* LoginViewController.swift */; };
 		2C8A1DA42CB26FBF003038F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A1DA32CB26FBF003038F5 /* Assets.xcassets */; };
+		2C8A1DB22CB2922F003038F5 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1DB12CB2922F003038F5 /* LoginModel.swift */; };
+		2C8A1DBA2CB29449003038F5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1DB92CB29449003038F5 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C8A1D972CB26FBD003038F5 /* Kream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8A1D9A2CB26FBD003038F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C8A1D9C2CB26FBD003038F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2C8A1D9E2CB26FBD003038F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2C8A1D9E2CB26FBD003038F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2C8A1DA32CB26FBF003038F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C8A1DA82CB26FBF003038F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C8A1DB12CB2922F003038F5 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		2C8A1DB92CB29449003038F5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +56,39 @@
 		2C8A1D992CB26FBD003038F5 /* Kream */ = {
 			isa = PBXGroup;
 			children = (
+				2C8A1DB02CB2921D003038F5 /* ViewControllers */,
+				2C8A1DAF2CB29202003038F5 /* Views */,
+				2C8A1DAE2CB291FB003038F5 /* Models */,
 				2C8A1D9A2CB26FBD003038F5 /* AppDelegate.swift */,
 				2C8A1D9C2CB26FBD003038F5 /* SceneDelegate.swift */,
-				2C8A1D9E2CB26FBD003038F5 /* ViewController.swift */,
+				2C8A1D9E2CB26FBD003038F5 /* LoginViewController.swift */,
 				2C8A1DA32CB26FBF003038F5 /* Assets.xcassets */,
 				2C8A1DA82CB26FBF003038F5 /* Info.plist */,
 			);
 			path = Kream;
+			sourceTree = "<group>";
+		};
+		2C8A1DAE2CB291FB003038F5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2C8A1DB12CB2922F003038F5 /* LoginModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2C8A1DAF2CB29202003038F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C8A1DB92CB29449003038F5 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2C8A1DB02CB2921D003038F5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,8 +160,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C8A1D9F2CB26FBD003038F5 /* ViewController.swift in Sources */,
+				2C8A1D9F2CB26FBD003038F5 /* LoginViewController.swift in Sources */,
+				2C8A1DB22CB2922F003038F5 /* LoginModel.swift in Sources */,
 				2C8A1D9B2CB26FBD003038F5 /* AppDelegate.swift in Sources */,
+				2C8A1DBA2CB29449003038F5 /* LoginView.swift in Sources */,
 				2C8A1D9D2CB26FBD003038F5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

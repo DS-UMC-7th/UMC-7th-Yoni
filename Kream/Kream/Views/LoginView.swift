@@ -87,7 +87,7 @@ class LoginView: UIView {
     }()
     
     // 로그인 버튼
-    private let loginButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("로그인", for: .normal)
         button.backgroundColor = UIColor.systemGray4

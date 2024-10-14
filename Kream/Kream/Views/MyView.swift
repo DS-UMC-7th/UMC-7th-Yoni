@@ -97,7 +97,7 @@ class MyView: UIView {
         return label
     }()
 
-    private let profileManageButton: UIButton = {
+    let profileManageButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.setTitle("프로필 관리", for: .normal)

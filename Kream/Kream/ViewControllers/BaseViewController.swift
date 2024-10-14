@@ -12,7 +12,7 @@ class BaseViewController: UITabBarController {
     private let styleVC = StyleViewController()
     private let shopVC = ShopViewController()
     private let savedVC = SavedViewController()
-    private let myVC = MyViewController()
+    private let myVC = UINavigationController(rootViewController: MyViewController())
 
     override func viewDidLoad() {
         super.viewDidLoad()

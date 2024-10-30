@@ -23,6 +23,9 @@
 		2C8A1DA42CB26FBF003038F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C8A1DA32CB26FBF003038F5 /* Assets.xcassets */; };
 		2C8A1DB22CB2922F003038F5 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1DB12CB2922F003038F5 /* LoginModel.swift */; };
 		2C8A1DBA2CB29449003038F5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8A1DB92CB29449003038F5 /* LoginView.swift */; };
+		2CBBF5482CD084DA00119F90 /* SavedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBF5472CD084DA00119F90 /* SavedTableViewCell.swift */; };
+		2CBBF54D2CD0860E00119F90 /* SavedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBF54C2CD0860E00119F90 /* SavedModel.swift */; };
+		2CBBF54F2CD2577C00119F90 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBF54E2CD2577C00119F90 /* SavedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		2C8A1DA82CB26FBF003038F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C8A1DB12CB2922F003038F5 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		2C8A1DB92CB29449003038F5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2CBBF5472CD084DA00119F90 /* SavedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTableViewCell.swift; sourceTree = "<group>"; };
+		2CBBF54C2CD0860E00119F90 /* SavedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedModel.swift; sourceTree = "<group>"; };
+		2CBBF54E2CD2577C00119F90 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 		2C8A1D992CB26FBD003038F5 /* Kream */ = {
 			isa = PBXGroup;
 			children = (
+				2CBBF5462CD083B000119F90 /* Cells */,
 				2C8A1DB02CB2921D003038F5 /* ViewControllers */,
 				2C8A1DAF2CB29202003038F5 /* Views */,
 				2C8A1DAE2CB291FB003038F5 /* Models */,
@@ -91,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2C8A1DB12CB2922F003038F5 /* LoginModel.swift */,
+				2CBBF54C2CD0860E00119F90 /* SavedModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -101,6 +109,7 @@
 				2C8A1DB92CB29449003038F5 /* LoginView.swift */,
 				2C4ED1DE2CBBFB710052E075 /* MyView.swift */,
 				2C4ED1E22CBD879E0052E075 /* ProfileManageView.swift */,
+				2CBBF54E2CD2577C00119F90 /* SavedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,6 +127,14 @@
 				2C4ED1E02CBC09C70052E075 /* ProfileManageViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2CBBF5462CD083B000119F90 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2CBBF5472CD084DA00119F90 /* SavedTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,12 +217,15 @@
 				2C4ED1E32CBD879E0052E075 /* ProfileManageView.swift in Sources */,
 				2C4ED1D22CBBEE1E0052E075 /* StyleViewController.swift in Sources */,
 				2C8A1D9B2CB26FBD003038F5 /* AppDelegate.swift in Sources */,
+				2CBBF5482CD084DA00119F90 /* SavedTableViewCell.swift in Sources */,
 				2C8A1DBA2CB29449003038F5 /* LoginView.swift in Sources */,
+				2CBBF54F2CD2577C00119F90 /* SavedView.swift in Sources */,
 				2C8A1D9D2CB26FBD003038F5 /* SceneDelegate.swift in Sources */,
 				2C4ED1D02CBBEE0E0052E075 /* HomeViewController.swift in Sources */,
 				2C4ED1D62CBBEE4E0052E075 /* SavedViewController.swift in Sources */,
 				2C4ED1CC2CBBEDAA0052E075 /* BaseViewController.swift in Sources */,
 				2C4ED1D82CBBEE560052E075 /* MyViewController.swift in Sources */,
+				2CBBF54D2CD0860E00119F90 /* SavedModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

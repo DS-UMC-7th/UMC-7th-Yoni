@@ -64,10 +64,9 @@ class ProfileManageView: UIView {
     }()
     
     // 이메일 텍스트 필드
-    private let emailTextField: UITextField = {
+    let emailTextField: UITextField = {
         let textField = UITextField()
-        
-        textField.text = "example@naver.com"
+
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray4.cgColor
@@ -101,10 +100,9 @@ class ProfileManageView: UIView {
     }()
     
     // 비밀번호 텍스트 필드
-    private let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let textField = UITextField()
         
-        textField.text = "****************"
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray4.cgColor

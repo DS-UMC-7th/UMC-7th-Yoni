@@ -8,6 +8,8 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    private let loginModel = LoginModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +27,17 @@ class LoginViewController: UIViewController {
     }
 
     @objc private func loginButtonDidTap() {
+        guard let id = loginView.emailTextField.text, !id.isEmpty else {
+            return }
+        guard let password = loginView.passwordTextField.text, !password.isEmpty else {
+            return
+        }
+        
+        loginModel.saveUserCredentials(id: id, password: password)
+        
         let baseViewController = BaseViewController()
         
         baseViewController.modalPresentationStyle = .fullScreen
-        
         present(baseViewController, animated: true)
     }
 }

@@ -53,7 +53,7 @@ class LoginView: UIView {
     }()
     
     // 이메일 텍스트 필드
-    private let emailTextField: UITextField = {
+    let emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "예) kream@kream.co.kr"
         textField.font = UIFont.systemFont(ofSize: 12)
@@ -74,7 +74,7 @@ class LoginView: UIView {
     }()
     
     // 비밀번호 텍스트 필드
-    private let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "비밀번호를 입력해 주세요"
         textField.isSecureTextEntry = true

@@ -9,18 +9,22 @@ import Foundation
 
 class LoginModel {
     private let userDefaults = UserDefaults.standard
-    private let userIdKey: String = "userId"
-    private let userPasswordKey: String = "userPassword"
+    private let userEmailKey: String = "email"
+    private let userPasswordKey: String = "password"
     
-    // 유저 아이디와 비밀번호 저장
-    public func saveUserCredentials(id: String, password: String) {
-        userDefaults.set(id, forKey: userIdKey)
+    // 유저 이메일 저장
+    public func saveUserEmail(_ email: String) {
+        userDefaults.set(email, forKey: userEmailKey)
+    }
+    
+    // 유저 비밀번호 저장
+    public func saveUserPassword(_ password: String) {
         userDefaults.set(password, forKey: userPasswordKey)
     }
     
-    // 유저 아이디 로드
-    public func loadUserId() -> String? {
-        return userDefaults.string(forKey: userIdKey)
+    // 유저 이메일 로드
+    public func loadUserEmail() -> String? {
+        return userDefaults.string(forKey: userEmailKey)
     }
     
     // 유저 비밀번호 로드

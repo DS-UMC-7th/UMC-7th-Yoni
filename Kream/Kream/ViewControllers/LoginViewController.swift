@@ -27,13 +27,14 @@ class LoginViewController: UIViewController {
     }
 
     @objc private func loginButtonDidTap() {
-        guard let id = loginView.emailTextField.text, !id.isEmpty else {
+        guard let email = loginView.emailTextField.text, !email.isEmpty else {
             return }
         guard let password = loginView.passwordTextField.text, !password.isEmpty else {
             return
         }
         
-        loginModel.saveUserCredentials(id: id, password: password)
+        loginModel.saveUserEmail(email)
+        loginModel.saveUserPassword(password)
         
         let baseViewController = BaseViewController()
         

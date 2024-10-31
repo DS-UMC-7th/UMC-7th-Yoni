@@ -71,12 +71,13 @@ class ProfileManageView: UIView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray4.cgColor
         textField.layer.cornerRadius = 10
+        textField.isUserInteractionEnabled = false
         
         return textField
     }()
     
     // 이메일 변경 버튼
-    private let changeEmailButton: UIButton = {
+    let changeEmailButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.setTitle("변경", for: .normal)
@@ -108,12 +109,13 @@ class ProfileManageView: UIView {
         textField.layer.borderColor = UIColor.systemGray4.cgColor
         textField.layer.cornerRadius = 10
         textField.isSecureTextEntry = true
+        textField.isUserInteractionEnabled = false
         
         return textField
     }()
     
     // 비밀번호 변경 버튼
-    private let changePasswordButton: UIButton = {
+    let changePasswordButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.setTitle("변경", for: .normal)

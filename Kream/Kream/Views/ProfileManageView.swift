@@ -32,10 +32,9 @@ class ProfileManageView: UIView {
     }
     
     // 프로필 이미지
-    private let profileImageView: UIImageView = {
+    let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        
-        imageView.image = UIImage(named: "profile_image")
+
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 45
         imageView.clipsToBounds = true

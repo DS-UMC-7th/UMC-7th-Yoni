@@ -54,7 +54,7 @@ class MyView: UIView {
         return button
     }()
     
-    private let profileImageView: UIImageView = {
+    let profileImageView: UIImageView = {
         let imageView = UIImageView()
         
         imageView.image = UIImage(named: "profile_image")

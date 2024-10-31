@@ -15,7 +15,7 @@ class ProfileManageViewController: UIViewController {
         self.title = "프로필 관리"
     }
     
-    private lazy var profileManageView: ProfileManageView = {
+    lazy var profileManageView: ProfileManageView = {
         let view = ProfileManageView()
         return view
     }()

@@ -27,6 +27,9 @@ class MyViewController: UIViewController {
     
     @objc private func profileManageButtonDidTap() {
         let profileManageViewController = ProfileManageViewController()
+        
+        // 프로필 이미지 전달
+        profileManageViewController.profileManageView.profileImageView.image = myView.profileImageView.image
 
         navigationController?.pushViewController(profileManageViewController, animated: true)
     }

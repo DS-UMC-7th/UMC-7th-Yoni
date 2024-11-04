@@ -32,10 +32,9 @@ class ProfileManageView: UIView {
     }
     
     // 프로필 이미지
-    private let profileImageView: UIImageView = {
+    let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        
-        imageView.image = UIImage(named: "profile_image")
+
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 45
         imageView.clipsToBounds = true
@@ -65,20 +64,20 @@ class ProfileManageView: UIView {
     }()
     
     // 이메일 텍스트 필드
-    private let emailTextField: UITextField = {
+    let emailTextField: UITextField = {
         let textField = UITextField()
-        
-        textField.text = "example@naver.com"
+
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray4.cgColor
         textField.layer.cornerRadius = 10
+        textField.isUserInteractionEnabled = false
         
         return textField
     }()
     
     // 이메일 변경 버튼
-    private let changeEmailButton: UIButton = {
+    let changeEmailButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.setTitle("변경", for: .normal)
@@ -102,21 +101,21 @@ class ProfileManageView: UIView {
     }()
     
     // 비밀번호 텍스트 필드
-    private let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let textField = UITextField()
         
-        textField.text = "****************"
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray4.cgColor
         textField.layer.cornerRadius = 10
         textField.isSecureTextEntry = true
+        textField.isUserInteractionEnabled = false
         
         return textField
     }()
     
     // 비밀번호 변경 버튼
-    private let changePasswordButton: UIButton = {
+    let changePasswordButton: UIButton = {
         let button = UIButton(type: .system)
         
         button.setTitle("변경", for: .normal)

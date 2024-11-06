@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     
     private func setupDelegate() {
         homeView.menuCollectionView.dataSource = self
+        homeView.dropCollectionView.dataSource = self
     }
     
     @objc
@@ -45,19 +46,43 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return HomeMenuModel.dummy().count
+        if collectionView == homeView.menuCollectionView {
+            return HomeMenuModel.dummy().count
+        } else if collectionView == homeView.dropCollectionView {
+            return HomeDropModel.dummy().count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMenuCollectionViewCell.identifier, for: indexPath) as? HomeMenuCollectionViewCell else {
+        if collectionView == homeView.menuCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMenuCollectionViewCell.identifier, for: indexPath) as? HomeMenuCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            let list = HomeMenuModel.dummy()
+            
+            cell.imageView.image = list[indexPath.row].image
+            cell.titleLabel.text = list[indexPath.row].title
+            
+            return cell
+        } else if collectionView == homeView.dropCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeDropCollectionViewCell.identifier, for: indexPath) as? HomeDropCollectionViewCell else {
+                
+                return UICollectionViewCell()
+            }
+            
+            let list = HomeDropModel.dummy()
+            
+            cell.imageView.image = list[indexPath.row].image
+            cell.titleLabel.text = list[indexPath.row].title
+            cell.brandLabel.text = list[indexPath.row].brand
+            cell.priceLabel.text = list[indexPath.row].price
+            
+            return cell
+        } else {
             return UICollectionViewCell()
         }
-        
-        let list = HomeMenuModel.dummy()
-        
-        cell.imageView.image = list[indexPath.row].image
-        cell.titleLabel.text = list[indexPath.row].title
-        
-        return cell
     }
 }

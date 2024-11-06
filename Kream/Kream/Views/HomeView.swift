@@ -68,17 +68,45 @@ class HomeView: UIView {
         $0.estimatedItemSize = .init(width: 61, height: 81)
         $0.minimumInteritemSpacing = 9
         $0.minimumLineSpacing = 20
-    }).then{
+    }).then {
         $0.backgroundColor = .clear
         $0.isScrollEnabled = false
         $0.register(HomeMenuCollectionViewCell.self, forCellWithReuseIdentifier: HomeMenuCollectionViewCell.identifier)
+    }
+    
+    // 구분선
+    let divideLine = UIView().then {
+        $0.backgroundColor = .systemGray5
+    }
+    
+    // 발매 상품 제목
+    let dropTitleLabel = UILabel().then {
+        $0.text = "Just Dropped"
+        $0.font = .boldSystemFont(ofSize: 16)
+    }
+    
+    // 발매 상품 부제목
+    let dropSubTitleLabel = UILabel().then {
+        $0.text = "발매 상품"
+        $0.font = .systemFont(ofSize: 13)
+        $0.textColor = .systemGray
+    }
+    
+    // 발매 상품 컬렉션 뷰
+    let dropCollectionView = UICollectionView(frame: .zero, collectionViewLayout:
+                                                UICollectionViewFlowLayout().then {
+        $0.estimatedItemSize = .init(width: 142, height: 237)
+        $0.minimumInteritemSpacing = 9
+        $0.scrollDirection = .horizontal
+    }).then {
+        $0.backgroundColor = .clear
+        $0.register(HomeDropCollectionViewCell.self, forCellWithReuseIdentifier: HomeDropCollectionViewCell.identifier)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         setupView()
-//        setupColorViews()
     }
     
     required init?(coder: NSCoder) {
@@ -95,7 +123,11 @@ class HomeView: UIView {
             notificationButton,
             segmentedControl,
             bannerImage,
-            menuCollectionView
+            menuCollectionView,
+            divideLine,
+            dropTitleLabel,
+            dropSubTitleLabel,
+            dropCollectionView
         ].forEach {
             contentView.addSubview($0)
         }
@@ -137,7 +169,30 @@ class HomeView: UIView {
         
         menuCollectionView.snp.makeConstraints {
             $0.top.equalTo(bannerImage.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(182)
+        }
+        
+        divideLine.snp.makeConstraints {
+            $0.top.equalTo(menuCollectionView.snp.bottom).offset(30)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+        
+        dropTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(divideLine.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(16)
+        }
+        
+        dropCollectionView.snp.makeConstraints {
+            $0.top.equalTo(dropTitleLabel.snp.bottom).offset(4)
+            $0.leading.equalTo(dropTitleLabel.snp.leading)
+        }
+        
+        dropCollectionView.snp.makeConstraints {
+            $0.top.equalTo(dropCollectionView.snp.bottom).offset(14)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(237)
             $0.bottom.equalToSuperview()
         }
     }

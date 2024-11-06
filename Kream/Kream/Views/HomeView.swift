@@ -10,6 +10,15 @@ import Then
 
 class HomeView: UIView {
     
+    // 스크롤 뷰
+    private let scrollView = UIScrollView().then {
+        $0.showsVerticalScrollIndicator = true
+        $0.showsHorizontalScrollIndicator = false
+    }
+    
+    // 컨텐트 뷰
+    private let contentView = UIView()
+    
     // 검색 텍스트 필드
     private let searchBarTextField = UITextField().then {
         $0.backgroundColor = .systemGray6
@@ -69,6 +78,7 @@ class HomeView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         setupView()
+//        setupColorViews()
     }
     
     required init?(coder: NSCoder) {
@@ -76,6 +86,10 @@ class HomeView: UIView {
     }
     
     private func setupView() {
+        self.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
+        // contentView 내부에 추가
         [
             searchBarTextField,
             notificationButton,
@@ -83,12 +97,21 @@ class HomeView: UIView {
             bannerImage,
             menuCollectionView
         ].forEach {
-            addSubview($0)
+            contentView.addSubview($0)
         }
         
         // 오토 레이아웃 설정
+        scrollView.snp.makeConstraints {
+            $0.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.width.equalToSuperview()
+        }
+        
         searchBarTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(51)
+            $0.top.equalToSuperview().offset(6)
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalTo(notificationButton.snp.leading).offset(-15)
             $0.height.equalTo(40)
@@ -102,7 +125,8 @@ class HomeView: UIView {
         
         segmentedControl.snp.makeConstraints {
             $0.top.equalTo(searchBarTextField.snp.bottom).offset(16)
-            $0.horizontalEdges.equalToSuperview().inset(24)
+            $0.leading.equalToSuperview().offset(24)
+            $0.trailing.equalToSuperview().offset(-24)
             $0.height.equalTo(19)
         }
         
@@ -113,7 +137,7 @@ class HomeView: UIView {
         
         menuCollectionView.snp.makeConstraints {
             $0.top.equalTo(bannerImage.snp.bottom).offset(20)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
     }

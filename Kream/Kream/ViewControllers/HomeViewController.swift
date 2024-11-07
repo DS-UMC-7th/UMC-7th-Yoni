@@ -37,10 +37,26 @@ class HomeViewController: UIViewController {
         if segment.selectedSegmentIndex == 0 {
             homeView.bannerImage.isHidden = false
             homeView.menuCollectionView.isHidden = false
+            homeView.divideLine1.isHidden = false
+            homeView.dropTitleLabel.isHidden = false
+            homeView.dropSubTitleLabel.isHidden = false
+            homeView.dropCollectionView.isHidden = false
+            homeView.divideLine2.isHidden = false
+            homeView.itemTitleLabel.isHidden = false
+            homeView.itemSubTitleLabel.isHidden = false
+            homeView.itemCollectionView.isHidden = false
         }
         else {
             homeView.bannerImage.isHidden = true
             homeView.menuCollectionView.isHidden = true
+            homeView.divideLine1.isHidden = true
+            homeView.dropTitleLabel.isHidden = true
+            homeView.dropSubTitleLabel.isHidden = true
+            homeView.dropCollectionView.isHidden = true
+            homeView.divideLine2.isHidden = true
+            homeView.itemTitleLabel.isHidden = true
+            homeView.itemSubTitleLabel.isHidden = true
+            homeView.itemCollectionView.isHidden = true
         }
     }
 }

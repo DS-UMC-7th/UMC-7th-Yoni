@@ -19,6 +19,7 @@ class HomeView: UIView {
     // 컨텐트 뷰
     private let contentView = UIView()
     
+    // MARK: - 상단 레이아웃
     // 검색 텍스트 필드
     private let searchBarTextField = UITextField().then {
         $0.backgroundColor = .systemGray6
@@ -58,6 +59,7 @@ class HomeView: UIView {
         )
     }
     
+    // MARK: - 메인 레이아웃
     // 배너 이미지
     let bannerImage = UIImageView().then {
         $0.image = UIImage(named: "image_ad_none")
@@ -74,8 +76,9 @@ class HomeView: UIView {
         $0.register(HomeMenuCollectionViewCell.self, forCellWithReuseIdentifier: HomeMenuCollectionViewCell.identifier)
     }
     
-    // 구분선
-    let divideLine = UIView().then {
+    // MARK: - 발매 상품 레이아웃
+    // 구분선 1
+    let divideLine1 = UIView().then {
         $0.backgroundColor = .systemGray5
     }
     
@@ -103,6 +106,37 @@ class HomeView: UIView {
         $0.register(HomeDropCollectionViewCell.self, forCellWithReuseIdentifier: HomeDropCollectionViewCell.identifier)
     }
     
+    // MARK: - 본격 한파대비! 연말 필수템 모음 레이아웃
+    // 구분선
+    let divideLine2 = UIView().then {
+        $0.backgroundColor = .systemGray5
+    }
+    
+    // 아이템 제목
+    let itemTitleLabel = UILabel().then {
+        $0.text = "본격 한파대비! 연말 필수템 모음"
+        $0.font = .boldSystemFont(ofSize: 16)
+    }
+    
+    // 아이템 부제목
+    let itemSubTitleLabel = UILabel().then {
+        $0.text = "#해피홀리룩챌린지"
+        $0.font = .systemFont(ofSize: 13)
+        $0.textColor = .systemGray
+    }
+    
+    // 아이템 컬렉션 뷰
+    let itemCollectionView = UICollectionView(frame: .zero, collectionViewLayout:
+                                                UICollectionViewFlowLayout().then {
+        $0.estimatedItemSize = .init(width: 124, height: 165)
+        $0.minimumInteritemSpacing = 8
+        $0.scrollDirection = .horizontal
+    }).then {
+        $0.backgroundColor = .clear
+        $0.register(HomeItemCollectionViewCell.self, forCellWithReuseIdentifier: HomeItemCollectionViewCell.identifier)
+    }
+    
+    // MARK: - 설정
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -124,10 +158,14 @@ class HomeView: UIView {
             segmentedControl,
             bannerImage,
             menuCollectionView,
-            divideLine,
+            divideLine1,
             dropTitleLabel,
             dropSubTitleLabel,
-            dropCollectionView
+            dropCollectionView,
+            divideLine2,
+            itemTitleLabel,
+            itemSubTitleLabel,
+            itemCollectionView
         ].forEach {
             contentView.addSubview($0)
         }
@@ -173,26 +211,48 @@ class HomeView: UIView {
             $0.height.equalTo(182)
         }
         
-        divideLine.snp.makeConstraints {
+        divideLine1.snp.makeConstraints {
             $0.top.equalTo(menuCollectionView.snp.bottom).offset(30)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(1)
         }
         
         dropTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(divideLine.snp.bottom).offset(20)
+            $0.top.equalTo(divideLine1.snp.bottom).offset(20)
             $0.leading.equalToSuperview().offset(16)
         }
         
-        dropCollectionView.snp.makeConstraints {
+        dropSubTitleLabel.snp.makeConstraints {
             $0.top.equalTo(dropTitleLabel.snp.bottom).offset(4)
             $0.leading.equalTo(dropTitleLabel.snp.leading)
         }
         
         dropCollectionView.snp.makeConstraints {
-            $0.top.equalTo(dropCollectionView.snp.bottom).offset(14)
+            $0.top.equalTo(dropSubTitleLabel.snp.bottom).offset(14)
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(237)
+        }
+        
+        divideLine2.snp.makeConstraints {
+            $0.top.equalTo(dropCollectionView.snp.bottom).offset(30)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+        
+        itemTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(divideLine2.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().offset(16)
+        }
+        
+        itemSubTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(itemTitleLabel.snp.bottom).offset(4)
+            $0.leading.equalTo(itemTitleLabel.snp.leading)
+        }
+        
+        itemCollectionView.snp.makeConstraints {
+            $0.top.equalTo(itemSubTitleLabel.snp.bottom).offset(14)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(165)
             $0.bottom.equalToSuperview()
         }
     }

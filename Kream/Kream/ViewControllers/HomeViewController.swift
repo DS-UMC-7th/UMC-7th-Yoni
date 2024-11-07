@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
     private func setupDelegate() {
         homeView.menuCollectionView.dataSource = self
         homeView.dropCollectionView.dataSource = self
+        homeView.itemCollectionView.dataSource = self
     }
     
     @objc
@@ -50,6 +51,8 @@ extension HomeViewController: UICollectionViewDataSource {
             return HomeMenuModel.dummy().count
         } else if collectionView == homeView.dropCollectionView {
             return HomeDropModel.dummy().count
+        } else if collectionView == homeView.itemCollectionView {
+            return HomeItemModel.dummy().count
         } else {
             return 0
         }
@@ -79,6 +82,16 @@ extension HomeViewController: UICollectionViewDataSource {
             cell.titleLabel.text = list[indexPath.row].title
             cell.brandLabel.text = list[indexPath.row].brand
             cell.priceLabel.text = list[indexPath.row].price
+            
+            return cell
+        } else if collectionView == homeView.itemCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeItemCollectionViewCell.identifier, for: indexPath) as? HomeItemCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            let list = HomeItemModel.dummy()
+            
+            cell.imageView.image = list[indexPath.row].image
             
             return cell
         } else {

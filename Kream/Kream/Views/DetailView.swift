@@ -55,6 +55,44 @@ class DetailView: UIView {
         $0.font = UIFont.systemFont(ofSize: 12)
     }
     
+    // MARK: - 하단 레이아웃
+    // 하단 컨테이너 뷰
+    private let bottomView = UIView().then {
+        $0.backgroundColor = .white
+        
+        // 상단 테두리 추가
+        let topBorder = CALayer()
+        topBorder.backgroundColor = UIColor.systemGray6.cgColor
+        topBorder.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1) // 테두리 두께 설정
+        $0.layer.addSublayer(topBorder)
+    }
+    
+    // 북마크 버튼
+    private let bookmarkButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        $0.setTitle("2,122", for: .normal)
+        $0.tintColor = .black
+        $0.setTitleColor(.black, for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+    }
+    
+    // 구매, 판매 버튼 스택 뷰
+    let stackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.spacing = 6
+        $0.distribution = .fillEqually
+    }
+    
+    // 구매 버튼
+    let buyButton = UIButton().then {
+        $0.setImage(UIImage(named: "button_buy"), for: .normal)
+    }
+    
+    // 판매 버튼
+    let sellButton = UIButton().then {
+        $0.setImage(UIImage(named: "button_sell"), for: .normal)
+    }
+    
     // MARK: - 설정
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,20 +105,27 @@ class DetailView: UIView {
     }
     
     private func setupView() {
+        bottomView.addSubview(bookmarkButton)
+        bottomView.addSubview(stackView)
+        stackView.addArrangedSubview(buyButton)
+        stackView.addArrangedSubview(sellButton)
+        
         [
             itemImageView,
             otherColorItemCollectionView,
             priceDescriptionLabel,
             priceLabel,
             nameLabel,
-            krNameLabel
+            krNameLabel,
+            bottomView
         ].forEach {
             addSubview($0)
         }
         
         // 오토 레이아웃 설정
         itemImageView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+            $0.top.equalTo(safeAreaLayoutGuide).offset(13.71)
+            $0.leading.trailing.equalToSuperview()
             $0.width.equalTo(self.snp.width)
             $0.height.equalTo(373)
         }
@@ -109,6 +154,23 @@ class DetailView: UIView {
         krNameLabel.snp.makeConstraints {
             $0.top.equalTo(nameLabel.snp.bottom).offset(6)
             $0.horizontalEdges.equalToSuperview().inset(16)
+        }
+        
+        bottomView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(95)
+            $0.bottom.equalToSuperview()
+        }
+        
+        bookmarkButton.snp.makeConstraints {
+            $0.centerY.equalTo(stackView)
+            $0.leading.equalToSuperview().offset(16)
+        }
+        
+        stackView.snp.makeConstraints {
+            $0.leading.equalTo(bookmarkButton.snp.trailing).offset(19)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.bottom.equalToSuperview().inset(38)
         }
     }
 }

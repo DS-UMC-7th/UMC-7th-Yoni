@@ -15,6 +15,10 @@
 		2C1D066E2CDB2A5F008BD254 /* HomeDropModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D066D2CDB2A5F008BD254 /* HomeDropModel.swift */; };
 		2C1D06702CDD09BF008BD254 /* HomeItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D066F2CDD09BF008BD254 /* HomeItemCollectionViewCell.swift */; };
 		2C1D06722CDD0A2B008BD254 /* HomeItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D06712CDD0A2B008BD254 /* HomeItemModel.swift */; };
+		2C1D06952CDE1F63008BD254 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D06942CDE1F63008BD254 /* DetailView.swift */; };
+		2C1D06972CDE1FCC008BD254 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D06962CDE1FCC008BD254 /* DetailViewController.swift */; };
+		2C1D06992CDE2557008BD254 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D06982CDE2557008BD254 /* DetailModel.swift */; };
+		2C1D069D2CDE25BF008BD254 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D069C2CDE25BF008BD254 /* DetailCollectionViewCell.swift */; };
 		2C4ED1CC2CBBEDAA0052E075 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4ED1CB2CBBEDAA0052E075 /* BaseViewController.swift */; };
 		2C4ED1D02CBBEE0E0052E075 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4ED1CF2CBBEE0E0052E075 /* HomeViewController.swift */; };
 		2C4ED1D22CBBEE1E0052E075 /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4ED1D12CBBEE1E0052E075 /* StyleViewController.swift */; };
@@ -44,6 +48,10 @@
 		2C1D066D2CDB2A5F008BD254 /* HomeDropModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDropModel.swift; sourceTree = "<group>"; };
 		2C1D066F2CDD09BF008BD254 /* HomeItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C1D06712CDD0A2B008BD254 /* HomeItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemModel.swift; sourceTree = "<group>"; };
+		2C1D06942CDE1F63008BD254 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		2C1D06962CDE1FCC008BD254 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2C1D06982CDE2557008BD254 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		2C1D069C2CDE25BF008BD254 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4ED1CB2CBBEDAA0052E075 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2C4ED1CF2CBBEE0E0052E075 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2C4ED1D12CBBEE1E0052E075 /* StyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +126,7 @@
 				2C1D06392CD8B84D008BD254 /* HomeMenuModel.swift */,
 				2C1D066D2CDB2A5F008BD254 /* HomeDropModel.swift */,
 				2C1D06712CDD0A2B008BD254 /* HomeItemModel.swift */,
+				2C1D06982CDE2557008BD254 /* DetailModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,6 +139,7 @@
 				2C4ED1E22CBD879E0052E075 /* ProfileManageView.swift */,
 				2CBBF54E2CD2577C00119F90 /* SavedView.swift */,
 				2C1D05FD2CD8A9CC008BD254 /* HomeView.swift */,
+				2C1D06942CDE1F63008BD254 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,6 +155,7 @@
 				2C8A1D9E2CB26FBD003038F5 /* LoginViewController.swift */,
 				2C4ED1CB2CBBEDAA0052E075 /* BaseViewController.swift */,
 				2C4ED1E02CBC09C70052E075 /* ProfileManageViewController.swift */,
+				2C1D06962CDE1FCC008BD254 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -156,6 +167,7 @@
 				2C1D063B2CD8BB63008BD254 /* HomeMenuCollectionViewCell.swift */,
 				2C1D066B2CDB1850008BD254 /* HomeDropCollectionViewCell.swift */,
 				2C1D066F2CDD09BF008BD254 /* HomeItemCollectionViewCell.swift */,
+				2C1D069C2CDE25BF008BD254 /* DetailCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -240,11 +252,14 @@
 				2C8A1DB22CB2922F003038F5 /* LoginModel.swift in Sources */,
 				2C4ED1D42CBBEE2E0052E075 /* ShopViewController.swift in Sources */,
 				2C4ED1E12CBC09C70052E075 /* ProfileManageViewController.swift in Sources */,
+				2C1D069D2CDE25BF008BD254 /* DetailCollectionViewCell.swift in Sources */,
 				2C1D06702CDD09BF008BD254 /* HomeItemCollectionViewCell.swift in Sources */,
+				2C1D06952CDE1F63008BD254 /* DetailView.swift in Sources */,
 				2C4ED1E32CBD879E0052E075 /* ProfileManageView.swift in Sources */,
 				2C4ED1D22CBBEE1E0052E075 /* StyleViewController.swift in Sources */,
 				2C8A1D9B2CB26FBD003038F5 /* AppDelegate.swift in Sources */,
 				2CBBF5482CD084DA00119F90 /* SavedTableViewCell.swift in Sources */,
+				2C1D06972CDE1FCC008BD254 /* DetailViewController.swift in Sources */,
 				2C1D066E2CDB2A5F008BD254 /* HomeDropModel.swift in Sources */,
 				2C1D05FE2CD8A9CC008BD254 /* HomeView.swift in Sources */,
 				2C8A1DBA2CB29449003038F5 /* LoginView.swift in Sources */,
@@ -252,6 +267,7 @@
 				2CBBF54F2CD2577C00119F90 /* SavedView.swift in Sources */,
 				2C8A1D9D2CB26FBD003038F5 /* SceneDelegate.swift in Sources */,
 				2C1D066C2CDB1850008BD254 /* HomeDropCollectionViewCell.swift in Sources */,
+				2C1D06992CDE2557008BD254 /* DetailModel.swift in Sources */,
 				2C4ED1D02CBBEE0E0052E075 /* HomeViewController.swift in Sources */,
 				2C4ED1D62CBBEE4E0052E075 /* SavedViewController.swift in Sources */,
 				2C4ED1CC2CBBEDAA0052E075 /* BaseViewController.swift in Sources */,

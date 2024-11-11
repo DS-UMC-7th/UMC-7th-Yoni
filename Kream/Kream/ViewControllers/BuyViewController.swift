@@ -14,6 +14,14 @@ class BuyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = buyView
+        setupActions()
     }
 
+    private func setupActions() {
+        buyView.backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc private func backButtonDidTap() {
+        self.dismiss(animated: true)
+    }
 }

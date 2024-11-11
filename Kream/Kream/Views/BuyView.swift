@@ -24,7 +24,7 @@ class BuyView: UIView {
     }
     
     // 뒤로가기 버튼
-    private let backButton = UIButton().then {
+    let backButton = UIButton().then {
         $0.setImage(UIImage(systemName: "xmark"), for: .normal)
         $0.tintColor = .black
     }

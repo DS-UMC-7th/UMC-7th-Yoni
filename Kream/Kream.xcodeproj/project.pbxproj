@@ -38,6 +38,8 @@
 		2CBBF5482CD084DA00119F90 /* SavedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBF5472CD084DA00119F90 /* SavedTableViewCell.swift */; };
 		2CBBF54D2CD0860E00119F90 /* SavedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBF54C2CD0860E00119F90 /* SavedModel.swift */; };
 		2CBBF54F2CD2577C00119F90 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBBF54E2CD2577C00119F90 /* SavedView.swift */; };
+		2CCB07532CDFDD110099EC15 /* BuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCB07522CDFDD110099EC15 /* BuyView.swift */; };
+		2CCB07552CDFDDBF0099EC15 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCB07542CDFDDBF0099EC15 /* BuyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		2CBBF5472CD084DA00119F90 /* SavedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTableViewCell.swift; sourceTree = "<group>"; };
 		2CBBF54C2CD0860E00119F90 /* SavedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedModel.swift; sourceTree = "<group>"; };
 		2CBBF54E2CD2577C00119F90 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
+		2CCB07522CDFDD110099EC15 /* BuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyView.swift; sourceTree = "<group>"; };
+		2CCB07542CDFDDBF0099EC15 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,7 @@
 				2CBBF54E2CD2577C00119F90 /* SavedView.swift */,
 				2C1D05FD2CD8A9CC008BD254 /* HomeView.swift */,
 				2C1D06942CDE1F63008BD254 /* DetailView.swift */,
+				2CCB07522CDFDD110099EC15 /* BuyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				2C4ED1CB2CBBEDAA0052E075 /* BaseViewController.swift */,
 				2C4ED1E02CBC09C70052E075 /* ProfileManageViewController.swift */,
 				2C1D06962CDE1FCC008BD254 /* DetailViewController.swift */,
+				2CCB07542CDFDDBF0099EC15 /* BuyViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -251,10 +257,12 @@
 				2C1D063C2CD8BB63008BD254 /* HomeMenuCollectionViewCell.swift in Sources */,
 				2C8A1DB22CB2922F003038F5 /* LoginModel.swift in Sources */,
 				2C4ED1D42CBBEE2E0052E075 /* ShopViewController.swift in Sources */,
+				2CCB07532CDFDD110099EC15 /* BuyView.swift in Sources */,
 				2C4ED1E12CBC09C70052E075 /* ProfileManageViewController.swift in Sources */,
 				2C1D069D2CDE25BF008BD254 /* DetailCollectionViewCell.swift in Sources */,
 				2C1D06702CDD09BF008BD254 /* HomeItemCollectionViewCell.swift in Sources */,
 				2C1D06952CDE1F63008BD254 /* DetailView.swift in Sources */,
+				2CCB07552CDFDDBF0099EC15 /* BuyViewController.swift in Sources */,
 				2C4ED1E32CBD879E0052E075 /* ProfileManageView.swift in Sources */,
 				2C4ED1D22CBBEE1E0052E075 /* StyleViewController.swift in Sources */,
 				2C8A1D9B2CB26FBD003038F5 /* AppDelegate.swift in Sources */,

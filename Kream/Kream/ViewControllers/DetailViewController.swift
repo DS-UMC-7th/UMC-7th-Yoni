@@ -15,12 +15,22 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.view = detailView
         setupDelegate()
+        setupActions()
     }
     
     private func setupDelegate() {
         detailView.otherColorItemCollectionView.dataSource = self
     }
     
+    private func setupActions() {
+        detailView.buyButton.addTarget(self, action: #selector(buytButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc private func buytButtonDidTap() {
+        let buytViewController = BuyViewController()
+        
+        present(buytViewController, animated: true)
+    }
 }
 
 extension DetailViewController: UICollectionViewDataSource {

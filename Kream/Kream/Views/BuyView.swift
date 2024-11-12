@@ -74,40 +74,26 @@ class BuyView: UIView {
         return config
     }
     
-    private lazy var sizeButton1 = UIButton(configuration: createButtonConfig(title: "S", subtitle: "360,000")).then {
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.systemGray6.cgColor
-        $0.layer.cornerRadius = 10
-        $0.clipsToBounds = true
+    // 사이즈 버튼 생성 메서드
+    private func createSizeButton(title: String, subtitle: String) -> UIButton {
+        let button = UIButton(configuration: createButtonConfig(title: title, subtitle: subtitle))
+        
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.systemGray6.cgColor
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
+        
+        return button
     }
     
-    private lazy var sizeButton2 = UIButton(configuration: createButtonConfig(title: "M", subtitle: "360,000")).then {
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.systemGray6.cgColor
-        $0.layer.cornerRadius = 10
-        $0.clipsToBounds = true
-    }
-    
-    private lazy var sizeButton3 = UIButton(configuration: createButtonConfig(title: "L", subtitle: "360,000")).then {
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.systemGray6.cgColor
-        $0.layer.cornerRadius = 10
-        $0.clipsToBounds = true
-    }
-    
-    private lazy var sizeButton4 = UIButton(configuration: createButtonConfig(title: "XL", subtitle: "360,000")).then {
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.systemGray6.cgColor
-        $0.layer.cornerRadius = 10
-        $0.clipsToBounds = true
-    }
-    
-    private lazy var sizeButton5 = UIButton(configuration: createButtonConfig(title: "XXL", subtitle: "360,000")).then {
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor.systemGray6.cgColor
-        $0.layer.cornerRadius = 10
-        $0.clipsToBounds = true
-    }
+    // 사이즈 버튼 배열
+    private lazy var sizeButtons: [UIButton] = [
+        createSizeButton(title: "S", subtitle: "360,000"),
+        createSizeButton(title: "M", subtitle: "360,000"),
+        createSizeButton(title: "L", subtitle: "360,000"),
+        createSizeButton(title: "XL", subtitle: "360,000"),
+        createSizeButton(title: "XXL", subtitle: "360,000")
+    ]
     
     // MARK: - 하단 레이아웃
     // 하단 컨테이너 뷰
@@ -162,15 +148,15 @@ class BuyView: UIView {
             nameLable,
             krNameLabel,
             bottomView,
-            sizeButton1,
-            sizeButton2,
-            sizeButton3,
-            sizeButton4,
-            sizeButton5
         ].forEach {
             addSubview($0)
         }
         
+        sizeButtons.forEach {
+            addSubview($0)
+        }
+        
+        // 오토 레이아웃 설정
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.centerX.equalToSuperview()
@@ -216,40 +202,31 @@ class BuyView: UIView {
             $0.bottom.equalToSuperview().inset(38)
         }
         
-        sizeButton1.snp.makeConstraints {
-            $0.top.equalTo(itemImageView.snp.bottom).offset(35)
-            $0.leading.equalToSuperview().offset(15)
-            $0.width.equalTo(110)
-            $0.height.equalTo(47)
-        }
-        
-        sizeButton2.snp.makeConstraints {
-            $0.top.equalTo(sizeButton1.snp.top)
-            $0.leading.equalTo(sizeButton1.snp.trailing).offset(7)
-            $0.width.equalTo(110)
-            $0.height.equalTo(47)
-        }
-        
-        sizeButton3.snp.makeConstraints {
-            $0.top.equalTo(sizeButton1.snp.top)
-            $0.leading.equalTo(sizeButton2.snp.trailing).offset(7)
-            $0.trailing.equalToSuperview().offset(-15)
-            $0.width.equalTo(110)
-            $0.height.equalTo(47)
-        }
-        
-        sizeButton4.snp.makeConstraints {
-            $0.top.equalTo(sizeButton1.snp.bottom).offset(8)
-            $0.leading.equalToSuperview().offset(15)
-            $0.width.equalTo(110)
-            $0.height.equalTo(47)
-        }
-        
-        sizeButton5.snp.makeConstraints {
-            $0.top.equalTo(sizeButton4.snp.top)
-            $0.leading.equalTo(sizeButton4.snp.trailing).offset(7)
-            $0.width.equalTo(110)
-            $0.height.equalTo(47)
+        var previousButton: UIButton?
+        for (index, button) in sizeButtons.enumerated() {
+            button.snp.makeConstraints {
+                $0.width.equalTo(110)
+                $0.height.equalTo(47)
+                
+                if index < 3 {
+                    $0.top.equalTo(itemImageView.snp.bottom).offset(35)
+                } else {
+                    $0.top.equalTo(sizeButtons[0].snp.bottom).offset(8)
+                }
+                
+                if index % 3 == 0 {
+                    $0.leading.equalToSuperview().offset(15)
+                } else {
+                    if let prev = previousButton {
+                        $0.leading.equalTo(prev.snp.trailing).offset(7)
+                    }
+                }
+                
+                if index % 3 == 2 {
+                    $0.trailing.equalToSuperview().offset(-15)
+                }
+            }
+            previousButton = button
         }
     }
 

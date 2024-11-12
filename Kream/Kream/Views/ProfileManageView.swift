@@ -66,7 +66,9 @@ class ProfileManageView: UIView {
     // 이메일 텍스트 필드
     let emailTextField: UITextField = {
         let textField = UITextField()
-
+        
+        textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 11.0, height: 0.0))
+        textField.leftViewMode = .always
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray4.cgColor
@@ -104,6 +106,8 @@ class ProfileManageView: UIView {
     let passwordTextField: UITextField = {
         let textField = UITextField()
         
+        textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 11.0, height: 0.0))
+        textField.leftViewMode = .always
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray4.cgColor

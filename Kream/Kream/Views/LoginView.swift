@@ -56,6 +56,8 @@ class LoginView: UIView {
     let emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "예) kream@kream.co.kr"
+        textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        textField.leftViewMode = .always
         textField.font = UIFont.systemFont(ofSize: 12)
         textField.layer.cornerRadius = 15
         textField.layer.borderWidth = 1
@@ -78,6 +80,8 @@ class LoginView: UIView {
         let textField = UITextField()
         textField.placeholder = "비밀번호를 입력해 주세요"
         textField.isSecureTextEntry = true
+        textField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        textField.leftViewMode = .always
         textField.font = UIFont.systemFont(ofSize: 12)
         textField.layer.cornerRadius = 15
         textField.layer.borderWidth = 1

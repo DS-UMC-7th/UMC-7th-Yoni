@@ -8,22 +8,56 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    private let homeView = HomeView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.view = homeView
+        setupAction()
+        setupDelegate()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupAction() {
+        homeView.segmentedControl.addTarget(
+            self,
+            action: #selector(segmentedControlValueChanged(segment:)),
+            for: .valueChanged
+        )
     }
-    */
+    
+    private func setupDelegate() {
+        homeView.menuCollectionView.dataSource = self
+    }
+    
+    @objc
+    private func segmentedControlValueChanged(segment: UISegmentedControl) {
+        if segment.selectedSegmentIndex == 0 {
+            homeView.bannerImage.isHidden = false
+            homeView.menuCollectionView.isHidden = false
+        }
+        else {
+            homeView.bannerImage.isHidden = true
+            homeView.menuCollectionView.isHidden = true
+        }
+    }
+}
 
+extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return HomeMenuModel.dummy().count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeMenuCollectionViewCell.identifier, for: indexPath) as? HomeMenuCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let list = HomeMenuModel.dummy()
+        
+        cell.imageView.image = list[indexPath.row].image
+        cell.titleLabel.text = list[indexPath.row].title
+        
+        return cell
+    }
 }

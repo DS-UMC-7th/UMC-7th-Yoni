@@ -87,7 +87,7 @@ class BuyView: UIView {
     }
     
     // 사이즈 버튼 배열
-    private lazy var sizeButtons: [UIButton] = [
+    lazy var sizeButtons: [UIButton] = [
         createSizeButton(title: "S", subtitle: "360,000"),
         createSizeButton(title: "M", subtitle: "360,000"),
         createSizeButton(title: "L", subtitle: "360,000"),

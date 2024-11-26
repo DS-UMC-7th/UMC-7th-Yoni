@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class LoginViewController: UIViewController {
     
     private let loginModel = LoginModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = loginView
         setupActions()
     }
-
+    
     private lazy var loginView: LoginView = {
         let view = LoginView()
         return view
@@ -24,8 +26,9 @@ class LoginViewController: UIViewController {
     
     private func setupActions() {
         loginView.loginButton.addTarget(self, action: #selector(loginButtonDidTap), for: .touchUpInside)
+        loginView.kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginButtonDidTap), for: .touchUpInside)
     }
-
+    
     @objc private func loginButtonDidTap() {
         guard let email = loginView.emailTextField.text, !email.isEmpty else {
             return }
@@ -40,6 +43,34 @@ class LoginViewController: UIViewController {
         
         baseViewController.modalPresentationStyle = .fullScreen
         present(baseViewController, animated: true)
+    }
+    
+    @objc private func kakaoLoginButtonDidTap() {
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoTalk() success.")
+                    
+                    // 성공 시 동작 구현
+                    _ = oauthToken
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoAccount() success.")
+                    
+                    //do something
+                    _ = oauthToken
+                }
+            }
+        }
     }
 }
 

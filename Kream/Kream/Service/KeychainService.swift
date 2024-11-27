@@ -15,35 +15,57 @@ class KeychainService {
     private init() {}
     
     // 토큰 및 닉네임 저장
-    @discardableResult
-    func saveToken(token: String, nickname: String) -> OSStatus {
+    func saveToken(token: String, nickname: String) {
         let tokenData = token.data(using: .utf8)!
+        let nicknameData = nickname.data(using: .utf8)!
         
         // Access Control 설정 (Face ID 또는 기기 잠금 해제 후 접근 가능)
-        let accessControl = SecAccessControlCreateWithFlags(
+        guard let accessControl = SecAccessControlCreateWithFlags(
             kCFAllocatorDefault,
             kSecAttrAccessibleWhenUnlocked,
             .userPresence,   // 사용자 인증 (Face ID, Touch ID 또는 기기 암호)
             nil
-        )
+        ) else {
+            print("Failed to create access control")
+            return
+        }
         
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,  // 일반 데이터 저장
-            kSecAttrAccount as String: nickname,             // 닉네임
-            kSecValueData as String: tokenData,             // 실제 토큰 데이터
-            kSecAttrAccessControl as String: accessControl! // 접근 제어 추가
+        // 토큰 저장
+        let tokenQuery: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: "accessToken",
+            kSecValueData as String: tokenData,
+            kSecAttrAccessControl as String: accessControl
         ]
         
-        // 기존 항목 삭제 후 새로운 항목 저장
-        SecItemDelete(query as CFDictionary)
-        return SecItemAdd(query as CFDictionary, nil)
+        // 기존 토큰 데이터 삭제 후 저장
+        SecItemDelete(tokenQuery as CFDictionary)
+        let tokenStatus = SecItemAdd(tokenQuery as CFDictionary, nil)
+        if tokenStatus != errSecSuccess {
+            print("Failed to save token with error code: \(tokenStatus)")
+        }
+        
+        // 닉네임 저장
+        let nicknameQuery: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: "nickname",
+            kSecValueData as String: nicknameData,
+            kSecAttrAccessControl as String: accessControl
+        ]
+        
+        // 기존 닉네임 데이터 삭제 후 저장
+        SecItemDelete(nicknameQuery as CFDictionary)
+        let nicknameStatus = SecItemAdd(nicknameQuery as CFDictionary, nil)
+        if nicknameStatus != errSecSuccess {
+            print("Failed to save nickname with error code: \(nicknameStatus)")
+        }
     }
     
-    // 토큰 불러오기
-    func loadToken(nickname: String) -> String? {
+    // 닉네임 불러오기
+    func loadNickname() -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: nickname,
+            kSecAttrAccount as String: "nickname",
             kSecReturnData as String: true,                 // 데이터를 반환하도록 설정
             kSecMatchLimit as String: kSecMatchLimitOne     // 하나의 결과만 반환
         ]
@@ -51,23 +73,15 @@ class KeychainService {
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         
-        guard status == errSecSuccess else { return nil }
+        guard status == errSecSuccess else {
+            print("Failed to fetch nickname with error code: \(status)")
+            return nil
+        }
         
-        if let data = item as? Data, let token = String(data: data, encoding: .utf8) {
-            return token
+        if let data = item as? Data, let nickname = String(data: data, encoding: .utf8) {
+            return nickname
         }
         
         return nil
-    }
-    
-    // 토큰 삭제
-    @discardableResult
-    func deleteToken(nickname: String) -> OSStatus {
-        let query: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: nickname
-        ]
-        
-        return SecItemDelete(query as CFDictionary)
     }
 }

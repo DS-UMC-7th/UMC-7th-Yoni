@@ -4,3 +4,6 @@
 # Xcode 사용자 설정 파일 무시
 *.xcuserstate
 xcuserdata/
+xcshareddata/*
+!xcshareddata/xcschemes/*
+xcschememanagement.plist

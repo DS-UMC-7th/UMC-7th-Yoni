@@ -14,6 +14,7 @@ class MyViewController: UIViewController {
         super.viewDidLoad()
         self.view = myView
         setupActions()
+        updateUsername()
     }
 
     private lazy var myView: MyView = {
@@ -32,5 +33,13 @@ class MyViewController: UIViewController {
         profileManageViewController.profileManageView.profileImageView.image = myView.profileImageView.image
 
         navigationController?.pushViewController(profileManageViewController, animated: true)
+    }
+    
+    private func updateUsername() {
+        if let savedNickname = KeychainService.shared.loadNickname() {
+            myView.userNameLabel.text = savedNickname
+        } else {
+            myView.userNameLabel.text = "Seon_iOS"
+        }
     }
 }

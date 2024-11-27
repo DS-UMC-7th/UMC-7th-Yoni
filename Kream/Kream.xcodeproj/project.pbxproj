@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -81,6 +81,10 @@
 		2CCB07542CDFDDBF0099EC15 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2CDE81C92CF5F9320074DD80 /* Service */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Service; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		2C8A1D942CB26FBD003038F5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -116,6 +120,7 @@
 		2C8A1D992CB26FBD003038F5 /* Kream */ = {
 			isa = PBXGroup;
 			children = (
+				2CDE81C92CF5F9320074DD80 /* Service */,
 				2CBBF5462CD083B000119F90 /* Cells */,
 				2C8A1DB02CB2921D003038F5 /* ViewControllers */,
 				2C8A1DAF2CB29202003038F5 /* Views */,
@@ -198,6 +203,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2CDE81C92CF5F9320074DD80 /* Service */,
 			);
 			name = Kream;
 			productName = Kream;

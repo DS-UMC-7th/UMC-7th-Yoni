@@ -39,10 +39,7 @@ class LoginViewController: UIViewController {
         loginModel.saveUserEmail(email)
         loginModel.saveUserPassword(password)
         
-        let baseViewController = BaseViewController()
-        
-        baseViewController.modalPresentationStyle = .fullScreen
-        present(baseViewController, animated: true)
+        self.transitionToMainScreen()
     }
     
     @objc private func kakaoLoginButtonDidTap() {
@@ -51,11 +48,9 @@ class LoginViewController: UIViewController {
                 if let error = error {
                     print(error)
                 }
-                else {
+                else if let oauthToken = oauthToken {
                     print("loginWithKakaoTalk() success.")
-                    
-                    // 성공 시 동작 구현
-                    _ = oauthToken
+                    self.saveUserInfo(oauthToken: oauthToken)
                 }
             }
         } else {
@@ -63,14 +58,33 @@ class LoginViewController: UIViewController {
                 if let error = error {
                     print(error)
                 }
-                else {
+                else if let oauthToken = oauthToken {
                     print("loginWithKakaoAccount() success.")
-                    
-                    //do something
-                    _ = oauthToken
+                    self.saveUserInfo(oauthToken: oauthToken)
                 }
             }
         }
     }
+    
+    private func saveUserInfo(oauthToken: OAuthToken) {
+        UserApi.shared.me { [weak self] (user, error) in
+            guard let self = self else { return }
+            if let error = error {
+                print("Failed to fetch user info: \(error.localizedDescription)")
+            } else if let user = user {
+                let nickname = user.kakaoAccount?.profile?.nickname ?? "Unknown"
+                KeychainService.shared.saveToken(token: oauthToken.accessToken, nickname: nickname)
+                print("User Info Saved: \(nickname)")
+                self.transitionToMainScreen()
+            }
+        }
+    }
+    
+    // 로그인
+    private func transitionToMainScreen() {
+        let baseViewController = BaseViewController()
+        baseViewController.modalPresentationStyle = .fullScreen
+        present(baseViewController, animated: true)
+    }
 }
-
+    

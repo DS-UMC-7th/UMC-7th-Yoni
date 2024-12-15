@@ -66,7 +66,7 @@ class MyView: UIView {
         return imageView
     }()
     
-    private let userNameLabel: UILabel = {
+    public let userNameLabel: UILabel = {
         let label = UILabel()
         
         label.text = "Seon_iOS"

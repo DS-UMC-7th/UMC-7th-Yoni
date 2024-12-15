@@ -103,7 +103,7 @@ class LoginView: UIView {
     }()
     
     // 카카오 로그인 버튼
-    private let kakaoLoginButton: UIButton = {
+    public let kakaoLoginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("카카오로 로그인", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
